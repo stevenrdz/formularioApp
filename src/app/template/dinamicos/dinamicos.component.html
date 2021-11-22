@@ -1,0 +1,57 @@
+<h2> Template: <small> Dinámicos</small> </h2>
+<hr>
+
+<form (ngSubmit)="guardar()" autocomplete="off" #miFormulario="ngForm">
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input type="text" 
+            required 
+            ngModel 
+            name= "nombre" 
+            class="form-control"
+            placeholder="Nombre de la persona">
+            <span class="form-text text-danger"
+                *ngIf="miFormulario.controls.nombre?.errors
+                && miFormulario.controls.nombre?.touched ">
+                Este campo es obligatorio
+            </span>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input class="form-control"
+                    placeholder="Agregar favorito">
+                <button class="btn btn-outline-primary"
+                    type="button">
+                    Agregar
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+            <input class="form-control mb-1"
+            required>
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" 
+            class="btn btn-primary float-end" 
+            [disabled]=" miFormulario.invalid"
+            (click)="guardar()" >
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>
